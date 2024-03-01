@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "F2t3RRU+JEZLWTMFzLsYTHsYevWcBbKHRB/HMD1JMjwhR53BXb5KwKS8ffUIQM+Jhx1lm2YbP9EvUe2R0uLvsw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\justw\\source\\repos\\Image Downsizer\\Image Downsizer\\Image Downsizer.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\justw\\.nuget\\packages\\microsoft.win32.systemevents\\8.0.0\\microsoft.win32.systemevents.8.0.0.nupkg.sha512",
+    "C:\\Users\\justw\\.nuget\\packages\\system.drawing.common\\8.0.2\\system.drawing.common.8.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}
