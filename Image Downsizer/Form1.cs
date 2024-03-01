@@ -62,7 +62,7 @@ namespace Image_Downsizer
 
         private void startResizingButton_Click(object sender, EventArgs e)
         {
-
+            if(image!=null) STSolver.Solve(percentage, image);
         }
     }
 }
