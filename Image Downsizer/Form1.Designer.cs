@@ -34,7 +34,9 @@
             this.wantedSizeLabel = new System.Windows.Forms.Label();
             this.percentageLabel = new System.Windows.Forms.Label();
             this.startResizingButton = new System.Windows.Forms.Button();
+            this.imagePB = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.percentTB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imagePB)).BeginInit();
             this.SuspendLayout();
             // 
             // addImgB
@@ -93,11 +95,21 @@
             this.startResizingButton.UseVisualStyleBackColor = true;
             this.startResizingButton.Click += new System.EventHandler(this.startResizingButton_Click);
             // 
+            // imagePB
+            // 
+            this.imagePB.Location = new System.Drawing.Point(24, 196);
+            this.imagePB.Name = "imagePB";
+            this.imagePB.Size = new System.Drawing.Size(332, 242);
+            this.imagePB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imagePB.TabIndex = 6;
+            this.imagePB.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.imagePB);
             this.Controls.Add(this.startResizingButton);
             this.Controls.Add(this.percentageLabel);
             this.Controls.Add(this.wantedSizeLabel);
@@ -107,6 +119,7 @@
             this.Name = "Form1";
             this.Text = "Image Downscaler";
             ((System.ComponentModel.ISupportInitialize)(this.percentTB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imagePB)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -120,5 +133,6 @@
         private Label wantedSizeLabel;
         private Label percentageLabel;
         private Button startResizingButton;
+        private PictureBox imagePB;
     }
 }

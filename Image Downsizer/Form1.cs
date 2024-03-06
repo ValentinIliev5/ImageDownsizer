@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 namespace Image_Downsizer
 {
     public partial class Form1 : Form
@@ -21,6 +23,8 @@ namespace Image_Downsizer
                     image = new Bitmap(filepath);
                     imgSizeLabel.Text = $"Original Image size: {image.Width} x {image.Height}";
                     wantedSizeLabel.Text = $"Wanted Size : {image.Width * percentage / 100} x {image.Height * percentage / 100}";
+
+                    imagePB.Image = image;
 
                 }
                 catch (Exception)
@@ -55,14 +59,35 @@ namespace Image_Downsizer
             if (image!=null)
             {
                 wantedSizeLabel.Text = $"Wanted Size : {image.Width * percentage / 100} x {image.Height * percentage / 100}";
-
+                if(percentage==33)
+                {
+                    wantedSizeLabel.Text = $"Wanted Size : {image.Width /3} x {image.Height /3}";
+                }
+                if (percentage == 66)
+                {
+                    wantedSizeLabel.Text = $"Wanted Size : {image.Width*2 / 3} x {image.Height*2 / 3}";
+                }
             }
 
         }
 
         private void startResizingButton_Click(object sender, EventArgs e)
         {
-            if(image!=null) STSolver.Solve(percentage, image);
+            if (image != null)
+            {
+                Stopwatch sw = new Stopwatch();
+                sw.Start();
+
+                Console.WriteLine(sw.Elapsed.TotalSeconds);
+
+                Solvers.MTSolver.Solve(percentage, image);
+                MessageBox.Show(sw.Elapsed.TotalSeconds.ToString()+" seconds","MultiThread");
+
+                sw.Restart();
+
+                Solvers.STSolver.Solve(percentage, image);
+                MessageBox.Show(sw.Elapsed.TotalSeconds.ToString()+" seconds", "SingleThread");
+            }
         }
     }
 }
