@@ -2,11 +2,11 @@ using System.Diagnostics;
 
 namespace Image_Downsizer
 {
-    public partial class Form1 : Form
+    public partial class DownsizerForm : Form
     {
         int percentage = 10;
         Bitmap image;
-        public Form1()
+        public DownsizerForm()
         {
             InitializeComponent();
         }

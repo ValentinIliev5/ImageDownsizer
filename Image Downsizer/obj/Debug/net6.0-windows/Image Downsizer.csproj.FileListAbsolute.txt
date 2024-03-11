@@ -4,7 +4,6 @@ C:\Users\justw\source\repos\Image Downsizer\Image Downsizer\bin\Debug\net6.0-win
 C:\Users\justw\source\repos\Image Downsizer\Image Downsizer\bin\Debug\net6.0-windows\Image Downsizer.dll
 C:\Users\justw\source\repos\Image Downsizer\Image Downsizer\bin\Debug\net6.0-windows\Image Downsizer.pdb
 C:\Users\justw\source\repos\Image Downsizer\Image Downsizer\obj\Debug\net6.0-windows\Image Downsizer.csproj.AssemblyReference.cache
-C:\Users\justw\source\repos\Image Downsizer\Image Downsizer\obj\Debug\net6.0-windows\Image_Downsizer.Form1.resources
 C:\Users\justw\source\repos\Image Downsizer\Image Downsizer\obj\Debug\net6.0-windows\Image Downsizer.csproj.GenerateResource.cache
 C:\Users\justw\source\repos\Image Downsizer\Image Downsizer\obj\Debug\net6.0-windows\Image Downsizer.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\justw\source\repos\Image Downsizer\Image Downsizer\obj\Debug\net6.0-windows\Image Downsizer.AssemblyInfoInputs.cache
@@ -19,3 +18,4 @@ C:\Users\justw\source\repos\Image Downsizer\Image Downsizer\bin\Debug\net6.0-win
 C:\Users\justw\source\repos\Image Downsizer\Image Downsizer\bin\Debug\net6.0-windows\System.Drawing.Common.dll
 C:\Users\justw\source\repos\Image Downsizer\Image Downsizer\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
 C:\Users\justw\source\repos\Image Downsizer\Image Downsizer\obj\Debug\net6.0-windows\Image Downsizer.csproj.CopyComplete
+C:\Users\justw\source\repos\Image Downsizer\Image Downsizer\obj\Debug\net6.0-windows\Image_Downsizer.DownsizerForm.resources

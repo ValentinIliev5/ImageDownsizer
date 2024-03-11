@@ -30,7 +30,7 @@ namespace Image_Downsizer.Solvers
             {
                 for (int j = 0; j < oldImage.Width + (oldImage.Width%2); j++)
                 {
-                    pixels[i, j] = Color.FromArgb(255, bgrValues[index + 2], bgrValues[index + 1], bgrValues[index]); //-7 gb ram used! 
+                    pixels[i, j] = Color.FromArgb(255, bgrValues[index + 2], bgrValues[index + 1], bgrValues[index]); 
                     index += 3;
                 }
             }
