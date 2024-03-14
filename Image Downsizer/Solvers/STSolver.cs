@@ -11,24 +11,13 @@ namespace Image_Downsizer.Solvers
     public static class STSolver
     {
 
-        public static void Solve(int percentage,Bitmap oldImage) 
+        public static void Solve(int percentage, byte[] bgrValues,int height, int width) 
         {
-            var rect = new Rectangle(0, 0, oldImage.Width, oldImage.Height);
-            BitmapData oldImagebitmapData = oldImage.LockBits(rect,ImageLockMode.ReadWrite,oldImage.PixelFormat);
-            IntPtr oldImagePtr = oldImagebitmapData.Scan0;
-
-            int bytes = Math.Abs(oldImagebitmapData.Stride) * oldImage.Height;
-            byte[] bgrValues = new byte[bytes];
-
-            Marshal.Copy(oldImagePtr, bgrValues, 0, bytes); // 3 bytes B0 G1 R2 
-
-            oldImage.UnlockBits(oldImagebitmapData);
-
-            Color[,] pixels = new Color[oldImage.Height, oldImage.Width + 1];
+            Color[,] pixels = new Color[height, width + (width % 2)];
             int index = 0;
-            for (int i = 0; i < oldImage.Height; i++)
+            for (int i = 0; i < height; i++)
             {
-                for (int j = 0; j < oldImage.Width + (oldImage.Width%2); j++)
+                for (int j = 0; j < width + (width % 2); j++)
                 {
                     pixels[i, j] = Color.FromArgb(255, bgrValues[index + 2], bgrValues[index + 1], bgrValues[index]); 
                     index += 3;
@@ -39,7 +28,7 @@ namespace Image_Downsizer.Solvers
 
             Bitmap newImage = ColorMatrixToBitmap(pixelsForNewImage);
 
-            newImage.Save("C:\\Downloads\\testST.jpg", ImageFormat.Jpeg);
+            newImage.Save("testST.jpg", ImageFormat.Jpeg);
             Console.WriteLine();
         }
         public static Bitmap ColorMatrixToBitmap(Color[,] colorMatrix)

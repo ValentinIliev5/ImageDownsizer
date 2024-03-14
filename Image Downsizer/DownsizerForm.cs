@@ -1,4 +1,6 @@
 using System.Diagnostics;
+using System.Drawing.Imaging;
+using System.Runtime.InteropServices;
 
 namespace Image_Downsizer
 {
@@ -75,17 +77,31 @@ namespace Image_Downsizer
         {
             if (image != null)
             {
+                var rect = new Rectangle(0, 0, image.Width, image.Height);
+                BitmapData oldImagebitmapData = image.LockBits(rect, ImageLockMode.ReadWrite, image.PixelFormat);
+                IntPtr oldImagePtr = oldImagebitmapData.Scan0;
+
+                int bytes = Math.Abs(oldImagebitmapData.Stride) * image.Height;
+                byte[] bgrValues = new byte[bytes];
+
+                Marshal.Copy(oldImagePtr, bgrValues, 0, bytes); // 3 bytes B0 G1 R2
+
+                image.UnlockBits(oldImagebitmapData);
+
+                int halfHeight = (image.Height + image.Height % 2) / 2;
+                int halfWidth = (image.Width + image.Width % 2) / 2;
+
                 Stopwatch sw = new Stopwatch();
                 sw.Start();
 
                 Console.WriteLine(sw.Elapsed.TotalSeconds);
 
-                Solvers.MTSolver.Solve(percentage, image);
+                Solvers.MTSolver.Solve(percentage, bgrValues,image.Height,image.Width);
                 MessageBox.Show(sw.Elapsed.TotalSeconds.ToString()+" seconds","MultiThread");
 
                 sw.Restart();
 
-                Solvers.STSolver.Solve(percentage, image);
+                Solvers.STSolver.Solve(percentage, bgrValues,image.Height,image.Width);
                 MessageBox.Show(sw.Elapsed.TotalSeconds.ToString()+" seconds", "SingleThread");
             }
         }

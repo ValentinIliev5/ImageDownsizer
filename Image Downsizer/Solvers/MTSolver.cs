@@ -10,21 +10,10 @@ namespace Image_Downsizer.Solvers
 {
     public static class MTSolver
     {
-        public static void Solve(int percentage, Bitmap oldImage)
+        public static void Solve(int percentage, byte[] bgrValues, int height, int width)
         {
-            var rect = new Rectangle(0, 0, oldImage.Width, oldImage.Height);
-            BitmapData oldImagebitmapData = oldImage.LockBits(rect, ImageLockMode.ReadWrite, oldImage.PixelFormat);
-            IntPtr oldImagePtr = oldImagebitmapData.Scan0;
-
-            int bytes = Math.Abs(oldImagebitmapData.Stride) * oldImage.Height;
-            byte[] bgrValues = new byte[bytes];
-
-            Marshal.Copy(oldImagePtr, bgrValues, 0, bytes); // 3 bytes B0 G1 R2 
-
-            oldImage.UnlockBits(oldImagebitmapData);
-
-            int halfHeight = (oldImage.Height + oldImage.Height % 2) / 2;
-            int halfWidth = (oldImage.Width + oldImage.Width % 2) / 2;
+            int halfHeight = (height + height % 2) / 2;
+            int halfWidth = (width + width % 2) / 2;
 
             Color[,] topLeftPixels = new Color[halfHeight, halfWidth];
             Color[,] topRightPixels = new Color[halfHeight, halfWidth];
@@ -32,9 +21,9 @@ namespace Image_Downsizer.Solvers
             Color[,] bottomRightPixels = new Color[halfHeight, halfWidth];
 
             int index = 0;
-            for (int i = 0; i < oldImage.Height; i++)
+            for (int i = 0; i < height; i++)
             {
-                for (int j = 0; j < oldImage.Width + (oldImage.Width % 2); j++)
+                for (int j = 0; j < width + (width % 2); j++)
                 {
                     Color pixelColor = Color.FromArgb(255, bgrValues[index + 2], bgrValues[index + 1], bgrValues[index]);
                     if (i < halfHeight)
@@ -66,7 +55,7 @@ namespace Image_Downsizer.Solvers
 
             Bitmap newImage = STSolver.ColorMatrixToBitmap(combinedPixels);
 
-            newImage.Save("C:\\Downloads\\testMT.jpg", ImageFormat.Jpeg);
+            newImage.Save("testMT.jpg", ImageFormat.Jpeg);
         }
         private static Color[,] CombineArrays(Color[,] topLeft,Color[,] topRight, Color[,] bottomLeft, Color[,] bottomRight)
         {

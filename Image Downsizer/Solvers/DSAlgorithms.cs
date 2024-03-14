@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,7 +23,8 @@ namespace Image_Downsizer.Solvers
                     int endX = (x + 1) * oldImage.GetLength(0) / newImage.GetLength(0);
                     int endY = (y + 1) * oldImage.GetLength(1) / newImage.GetLength(1);
 
-                    int totalR = 0, totalG = 0, totalB = 0;
+
+                    int totalR = 0, totalG = 0, totalB = 0; 
                     int count = 0;
                     for (int i = startX; i < endX; i++)
                     {
@@ -35,9 +37,9 @@ namespace Image_Downsizer.Solvers
                         }
                     }
 
-                    int avgR = totalR / count;
-                    int avgG = totalG / count;
-                    int avgB = totalB / count;
+                    byte avgR = (byte)(totalR / count);
+                    byte avgG = (byte)(totalG / count);
+                    byte avgB = (byte)(totalB / count);
 
                     newImage[x, y] = Color.FromArgb(avgR, avgG, avgB);
                 }
