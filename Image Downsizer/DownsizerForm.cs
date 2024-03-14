@@ -78,7 +78,7 @@ namespace Image_Downsizer
             if (image != null)
             {
                 var rect = new Rectangle(0, 0, image.Width, image.Height);
-                BitmapData oldImagebitmapData = image.LockBits(rect, ImageLockMode.ReadWrite, image.PixelFormat);
+                BitmapData oldImagebitmapData = image.LockBits(rect, ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
                 IntPtr oldImagePtr = oldImagebitmapData.Scan0;
 
                 int bytes = Math.Abs(oldImagebitmapData.Stride) * image.Height;
